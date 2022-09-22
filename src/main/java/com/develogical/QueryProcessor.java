@@ -9,8 +9,26 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         }
         if (query.toLowerCase().contains("name")) {
-            return "MyTeam";
+            return "JT-Team";
         }
-        return ""; 
+        
+
+        if (query.toLowerCase().contains("largest")) {
+            query = query.replaceAll("[^\\d.]", "");
+            query.replace(" ", "");
+            String[] parts = query.split(",");
+            int curLargest = Integer.parseInt(parts[0]);
+            for (int i = 0; i < parts.length; i++) {
+                int num = Integer.parseInt(parts[i]);
+                if (num > curLargest) {
+                    curLargest = num;
+                };
+            }
+            String res = String.valueOf(curLargest);
+            return res;
+        }
+
+        return "";
+
     }
 }
